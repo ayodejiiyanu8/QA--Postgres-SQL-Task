@@ -1,0 +1,51 @@
+Question 1
+SELECT COUNT (DISTINCT payment_id) AS transactions
+FROM payment
+WHERE amount > 5;
+
+Question 2
+SELECT COUNT (DISTINCT actor_id) AS num_actor
+FROM actor
+WHERE first_name LIKE 'P%';
+
+Question 3
+SELECT COUNT (DISTINCT district) AS num_unique_district
+FROM address;
+
+Question 4
+SELECT DISTINCT district AS num_unique_district
+FROM address;
+
+Question 5
+SELECT *
+FROM film
+WHERE title LIKE '%Truman%';
+
+Question 6
+CREATE TABLE potential_leads (customer_id int primary key, first_name varchar(25), last_name varchar (25) , email varchar(50), sign_up_date date, minutes_on_site time);
+
+Question 7
+SELECT *
+FROM customer
+WHERE first_name LIKE 'E%'
+AND address_id < 500;
+
+Question 8
+SELECT customer_id, sum(amount) AS amount_spent
+FROM payment
+WHERE staff_id = 2
+group by 1
+HAVING sum(amount) >110
+
+
+Question 9
+SELECT COUNT(film_id) AS num_films
+FROM film
+WHERE rating = 'R' AND
+replacement_cost BETWEEN 5 AND 15;
+
+Queustion 10
+SELECT MAX(amount) AS max_transaction
+FROM (SELECT customer_id, sum(amount) AS amount
+FROM payment
+	 GROUP BY customer_id) as payment;
